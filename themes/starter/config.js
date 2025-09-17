@@ -27,8 +27,8 @@ const CONFIG = {
   // 顶部右侧导航暗流
   STARTER_NAV_BUTTON_1_TEXT: '企业管理',
   STARTER_NAV_BUTTON_1_URL: 'https://managers.mixx.space/business/',
- STARTER_NAV_BUTTON_2_TEXT: '',
-  STARTER_NAV_BUTTON_2_URL: '',
+ //STARTER_NAV_BUTTON_2_TEXT: '',
+  //STARTER_NAV_BUTTON_2_URL: '',
 
   // 特性区块
   STARTER_FEATURE_ENABLE: false, // 特性区块开关
@@ -201,7 +201,7 @@ const CONFIG = {
   STARTER_TEAM_TITLE: '团队成员',
   STARTER_TEAM_TEXT_1: '我们的团队',
   STARTER_TEAM_TEXT_2:
-    'NotionNext 由众多开源技术爱好者们共同合作完成，感谢每一位<a className="underline" href="https://github.com/tangly1024/NotionNext/graphs/contributors">贡献者</a>',
+    '我们各有所长，值得信赖',
 
   // 这里不支持CONFIG和环境变量，需要一一修改此处代码。
   STARTER_TEAM_ITEMS: [
@@ -232,9 +232,9 @@ const CONFIG = {
   STARTER_BLOG_ENABLE: true, // 首页博文区块开关
   STARTER_BLOG_TITLE: '我们的博客',
   STARTER_BLOG_COUNT: 3, // 首页博文区块默认展示前3篇文章
-  STARTER_BLOG_TEXT_1: '最近的新闻',
+  STARTER_BLOG_TEXT_1: '最近动态',
   STARTER_BLOG_TEXT_2:
-    '这里会发布一些关于NotionNext的最新动态，包括新的动向、新的未来计划，以及新功能的特性',
+    '这里会发布一些关于mixx.space的最新动态，包括新的动向、新的未来计划，以及新产品功能等',
 
   // 联系模块
   STARTER_CONTACT_ENABLE: true, // 联系模块开关
