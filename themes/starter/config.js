@@ -27,7 +27,8 @@ const CONFIG = {
   // 顶部右侧导航暗流
   STARTER_NAV_BUTTON_1_TEXT: '企业管理',
   STARTER_NAV_BUTTON_1_URL: 'https://managers.mixx.space/business/',
-
+ STARTER_NAV_BUTTON_2_TEXT: '',
+  STARTER_NAV_BUTTON_2_URL: '',
 
   // 特性区块
   STARTER_FEATURE_ENABLE: false, // 特性区块开关
