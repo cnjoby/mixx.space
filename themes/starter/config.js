@@ -10,14 +10,14 @@ const CONFIG = {
 
   // 英雄区块导航
   STARTER_HERO_ENABLE: true, // 开启英雄区
-  STARTER_HERO_TITLE_1: 'A³文化智能计算平台', // 英雄区文字
+  STARTER_HERO_TITLE_1: 'A³文化智算平台', // 英雄区文字
   STARTER_HERO_TITLE_2: 'AI * AR * ARK', // 英雄区文字
   // 英雄区两个按钮，如果TEXT留空则隐藏按钮
-  STARTER_HERO_BUTTON_1_TEXT: '联系我们', // 英雄区按钮
+  STARTER_HERO_BUTTON_1_TEXT: '了解详情', // 英雄区按钮
   STARTER_HERO_BUTTON_1_URL:
-    'https://work.weixin.qq.com/kfid/kfcc557d7f09a391bc4', // 英雄区按钮
-  STARTER_HERO_BUTTON_2_TEXT: '', // 英雄区按钮
-  STARTER_HERO_BUTTON_2_URL: 'https://work.weixin.qq.com/kfid/kfcc557d7f09a391bc4', // 英雄区按钮
+    '/A3', // 英雄区按钮
+  STARTER_HERO_BUTTON_2_TEXT: '大空间MR', // 英雄区按钮
+  STARTER_HERO_BUTTON_2_URL: '/Platform', // 英雄区按钮
   STARTER_HERO_BUTTON_2_ICON: '', // 英雄区按钮2的图标，不需要则留空
 
   // 英雄区配图，如需隐藏，改为空值即可 ''
@@ -25,10 +25,10 @@ const CONFIG = {
   STARTER_HERO_BANNER_IMAGE: '', // hero区下方的全宽图
 
   // 顶部右侧导航暗流
-  STARTER_NAV_BUTTON_1_TEXT: 'Log In',
+  STARTER_NAV_BUTTON_1_TEXT: '平台',
   STARTER_NAV_BUTTON_1_URL: 'https://managers.mixx.space/business',
- //STARTER_NAV_BUTTON_2_TEXT: '/sign up',
-  //STARTER_NAV_BUTTON_2_URL: '/signup',
+  STARTER_NAV_BUTTON_2_TEXT: '联系',
+  STARTER_NAV_BUTTON_2_URL: 'https://work.weixin.qq.com/kfid/kfcc557d7f09a391bc4',
 
   // 特性区块
   STARTER_FEATURE_ENABLE: false, // 特性区块开关
