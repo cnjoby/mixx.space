@@ -25,10 +25,10 @@ const CONFIG = {
   STARTER_HERO_BANNER_IMAGE: '', // hero区下方的全宽图
 
   // 顶部右侧导航暗流
-  STARTER_NAV_BUTTON_1_TEXT: 'Sign In',
-  STARTER_NAV_BUTTON_1_URL: '/signin',
- STARTER_NAV_BUTTON_2_TEXT: '/sign up',
-  STARTER_NAV_BUTTON_2_URL: '/signup',
+  STARTER_NAV_BUTTON_1_TEXT: 'Log In',
+  STARTER_NAV_BUTTON_1_URL: 'https://managers.mixx.space/business',
+ //STARTER_NAV_BUTTON_2_TEXT: '/sign up',
+  //STARTER_NAV_BUTTON_2_URL: '/signup',
 
   // 特性区块
   STARTER_FEATURE_ENABLE: false, // 特性区块开关
