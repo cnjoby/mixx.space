@@ -25,7 +25,7 @@ const CONFIG = {
   STARTER_HERO_BANNER_IMAGE: '', // hero区下方的全宽图
 
   // 顶部右侧导航暗流
-  STARTER_NAV_BUTTON_1_TEXT: '平台',
+  STARTER_NAV_BUTTON_1_TEXT: '登录',
   STARTER_NAV_BUTTON_1_URL: 'https://managers.mixx.space/business',
   STARTER_NAV_BUTTON_2_TEXT: '联系',
   STARTER_NAV_BUTTON_2_URL: 'https://work.weixin.qq.com/kfid/kfcc557d7f09a391bc4',
@@ -291,8 +291,8 @@ const CONFIG = {
     }
   ],
 
-  STARTER_FOOTER_SLOGAN: '我们通过技术为品牌和公司创造数字体验。',
-
+  STARTER_FOOTER_SLOGAN: '运用前沿计算技术，构建文明传承的数字方舟，让珍贵的文化遗产在数字空间中获得永续生命力',
+/*
   // 页脚三列菜单组
   STARTER_FOOTER_LINK_GROUP: [
     {
@@ -300,10 +300,6 @@ const CONFIG = {
       LINK_GROUP: [
         { TITLE: '官方主页', URL: '/#home' },
         { TITLE: '操作文档', URL: 'https://docs.tangly1024.com/about' },
-        {
-          TITLE: '帮助支持',
-          URL: 'https://docs.tangly1024.com/article/how-to-question'
-        },
         {
           TITLE: '合作申请',
           URL: 'https://docs.tangly1024.com/article/my-service'
@@ -325,34 +321,35 @@ const CONFIG = {
       ]
     },
     {
-      TITLE: 'Notion写作',
-      LINK_GROUP: [
-        {
-          TITLE: 'Notion开始写作',
+      TITLE: '社交媒体',
+    //  LINK_GROUP: [
+       {
+         TITLE: '公众号',
           URL: 'https://docs.tangly1024.com/article/start-to-write'
-        },
+      },
         {
-          TITLE: '快捷键提升效率',
-          URL: 'https://docs.tangly1024.com/article/notion-short-key'
-        },
-        {
+        TITLE: '快捷键提升效率',
+         URL: 'https://docs.tangly1024.com/article/notion-short-key'
+       },
+       {
           TITLE: '中国大陆使用Notion',
           URL: 'https://docs.tangly1024.com/article/notion-faster'
         }
       ]
     }
   ],
+  */
 
   STARTER_FOOTER_BLOG_LATEST_TITLE: '最新文章',
 
-  STARTER_FOOTER_PRIVACY_POLICY_TEXT: '隐私政策',
-  STARTER_FOOTER_PRIVACY_POLICY_URL: '/privacy-policy',
+ // STARTER_FOOTER_PRIVACY_POLICY_TEXT: '隐私政策',
+  //STARTER_FOOTER_PRIVACY_POLICY_URL: '/privacy-policy',
 
-  STARTER_FOOTER_PRIVACY_LEGAL_NOTICE_TEXT: '法律声明',
-  STARTER_FOOTER_PRIVACY_LEGAL_NOTICE_URL: '/legacy-notice',
+//  STARTER_FOOTER_PRIVACY_LEGAL_NOTICE_TEXT: '法律声明',
+// STARTER_FOOTER_PRIVACY_LEGAL_NOTICE_URL: '/legacy-notice',
 
-  STARTER_FOOTER_PRIVACY_TERMS_OF_SERVICE_TEXT: '服务协议',
-  STARTER_FOOTER_PRIVACY_TERMS_OF_SERVICE_URL: '/terms-of-use',
+//STARTER_FOOTER_PRIVACY_TERMS_OF_SERVICE_TEXT: '服务协议',
+// STARTER_FOOTER_PRIVACY_TERMS_OF_SERVICE_URL: '/terms-of-use',
 
   // 404页面的提示语
   STARTER_404_TITLE: '我们似乎找不到您要找的页面。',
