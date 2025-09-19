@@ -11,6 +11,21 @@ export const Footer = props => {
     ? props?.latestPosts.slice(0, footerPostCount)
     : []
   const STARTER_FOOTER_LINK_GROUP = siteConfig('STARTER_FOOTER_LINK_GROUP', [])
+  
+  // 微信二维码配置
+  const wechatQRCodes = [
+    {
+      title: '微信公众号',
+      image: '/images/qrcode/wechat-official.png', // 请替换为实际的公众号二维码图片路径
+      description: '关注我们的公众号'
+    },
+    {
+      title: '微信视频号',
+      image: '/images/qrcode/wechat-video.png', // 请替换为实际的视频号二维码图片路径
+      description: '关注我们的视频号'
+    }
+  ]
+
   return (
     <>
       {/* <!-- ====== Footer Section Start --> */}
@@ -35,7 +50,7 @@ export const Footer = props => {
               </div>
             </div>
 
-            {/* 中间三列菜单组 */}
+            {/* 中间链接组 - 调整宽度以给二维码腾出空间 */}
             {STARTER_FOOTER_LINK_GROUP?.map((item, index) => {
               return (
                 <div
@@ -63,8 +78,36 @@ export const Footer = props => {
               )
             })}
 
-            {/* 页脚右侧最新博文 */}
-            <div className='w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12'>
+            {/* 微信二维码区域 */}
+            <div className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12'>
+              <div className='mb-10 w-full'>
+                <h4 className='mb-9 text-lg font-semibold text-white'>
+                  关注我们
+                </h4>
+                <div className='space-y-6'>
+                  {wechatQRCodes.map((qrcode, index) => (
+                    <div key={index} className='text-center'>
+                      <div className='mb-3 flex justify-center'>
+                        <img
+                          src={qrcode.image}
+                          alt={qrcode.title}
+                          className='h-20 w-20 rounded-lg border border-gray-600 object-cover'
+                        />
+                      </div>
+                      <h5 className='mb-1 text-sm font-medium text-white'>
+                        {qrcode.title}
+                      </h5>
+                      <p className='text-xs text-gray-7'>
+                        {qrcode.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 页脚右侧最新博文 - 调整宽度 */}
+            <div className='w-full px-4 md:w-2/3 lg:w-4/12 xl:w-3/12'>
               <div className='mb-10 w-full'>
                 <h4 className='mb-9 text-lg font-semibold text-white'>
                   {siteConfig('STARTER_FOOTER_BLOG_LATEST_TITLE')}
@@ -98,7 +141,6 @@ export const Footer = props => {
         </div>
 
         {/* 底部版权信息相关 */}
-
         <div className='mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]'>
           <div className='container'>
             <div className='-mx-4 flex flex-wrap'>
