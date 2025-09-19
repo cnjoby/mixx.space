@@ -16,12 +16,12 @@ export const Footer = props => {
   const wechatQRCodes = [
     {
       title: '微信公众号',
-      image: '/images/qrcode/wechat-official.png', // 请替换为实际的公众号二维码图片路径
+      image: '/images/starter/footer/wechat-official.png', // 请替换为实际的公众号二维码图片路径
       description: '关注我们的公众号'
     },
     {
       title: '微信视频号',
-      image: '/images/qrcode/wechat-video.png', // 请替换为实际的视频号二维码图片路径
+      image: '/images/starter/footer/wechat-video.png', // 请替换为实际的视频号二维码图片路径
       description: '关注我们的视频号'
     }
   ]
