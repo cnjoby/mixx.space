@@ -301,42 +301,37 @@ const CONFIG = {
         { TITLE: '官方主页', URL: '/#home' },
         {
           TITLE: '合作申请',
-          URL: 'https://docs.tangly1024.com/article/my-service'
+          URL: 'https://noteforms.com/forms/zdzoon'
         }
       ]
     },
     {
-      TITLE: '社交媒体',
+      TITLE: '公司自媒体',
       LINK_GROUP: [
-        {
-          TITLE: '部署指南',
-          URL: 'https://docs.tangly1024.com/article/vercel-deploy-notion-next'
+        { TITLE: '公众号:mixx.space', URL: 'http://weixin.qq.com/r/mp/MBByaoDEmd3mrcQJ90Ui' },
+      {TITLE: '抖音 - 未来博物馆',
+          URL: 'https://v.douyin.com/8Vo_coFd7GE/'
         },
-        {
-          TITLE: '升级指南',
-          URL: 'https://docs.tangly1024.com/article/how-to-update-notionnext'
-        },
-        { TITLE: '最新版本', URL: 'https://docs.tangly1024.com/article/latest' }
+        { TITLE: '小红书 - 未来博物馆', URL: 'https://www.xiaohongshu.com/user/profile/5d88423e0000000001008163' }
       ]
     }
-    /*,
+    ,
       {
-    TITLE: '社交媒体',
-      LINK_GROUP: [
+    TITLE: '蒋产品',
+      LINK_GROUP: [{
+          TITLE: '抖音 - 蒋产品',
+          URL: 'https://v.douyin.com/JzZaeTnbyOM/'
+        },
+         {
+          TITLE: 'B站 - 蒋产品',
+          URL: 'https://space.bilibili.com/4195074'
+        },
        {
-         TITLE: '公众号',
-          URL: 'https://docs.tangly1024.com/article/start-to-write'
-      },
-        {
-        TITLE: '快捷键提升效率',
-         URL: 'https://docs.tangly1024.com/article/notion-short-key'
-       },
-       {
-          TITLE: '中国大陆使用Notion',
-          URL: 'https://docs.tangly1024.com/article/notion-faster'
+          TITLE: '小红书 - 蒋产品',
+          URL: 'https://www.xiaohongshu.com/user/profile/61892f6b000000001000460d'
         } 
       ]
-    }*/
+    }
   ],
    
 
