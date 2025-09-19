@@ -6,23 +6,19 @@ import SmartLink from '@/components/SmartLink'
 
 /* eslint-disable @next/next/no-img-element */
 export const Footer = props => {
-  const footerPostCount = siteConfig('STARTER_FOOTER_POST_COUNT', 2)
-  const latestPosts = props?.latestPosts
-    ? props?.latestPosts.slice(0, footerPostCount)
-    : []
   const STARTER_FOOTER_LINK_GROUP = siteConfig('STARTER_FOOTER_LINK_GROUP', [])
   
   // 微信二维码配置
   const wechatQRCodes = [
     {
-      title: '关注微信公众号',
+      title: '微信公众号',
       image: '/images/starter/footer/wechat-official.png', // 请替换为实际的公众号二维码图片路径
-      description: ''
+      description: '关注我们的公众号'
     },
     {
-      title: '关注我们视频号',
+      title: '微信视频号',
       image: '/images/starter/footer/wechat-video.png', // 请替换为实际的视频号二维码图片路径
-      description: ''
+      description: '关注我们的视频号'
     }
   ]
 
@@ -34,12 +30,14 @@ export const Footer = props => {
         data-wow-delay='.15s'>
         <div className='container'>
           <div className='-mx-4 flex flex-wrap'>
-            <div className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12'>
+            
+            {/* Logo和介绍区域 - 扩大宽度 */}
+            <div className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-5/12 xl:w-4/12'>
               <div className='mb-10 w-full'>
                 <a className='-mx-4 mb-6 inline-block max-w-[160px]'>
                   <Logo white={true} />
                 </a>
-                <p className='mb-8 max-w-[270px] text-base text-gray-7'>
+                <p className='mb-8 max-w-[320px] text-base text-gray-7'>
                   {siteConfig('STARTER_FOOTER_SLOGAN')}
                 </p>
                 <div className='-mx-3 flex items-center'>
@@ -50,12 +48,12 @@ export const Footer = props => {
               </div>
             </div>
 
-            {/* 两列链接组 - 调整为更大的宽度 */}
+            {/* 两列链接组 - 调整为更合适的宽度 */}
             {STARTER_FOOTER_LINK_GROUP?.map((item, index) => {
               return (
                 <div
                   key={index}
-                  className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-3/12'>
+                  className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12'>
                   <div className='mb-10 w-full'>
                     <h4 className='mb-9 text-lg font-semibold text-white'>
                       {item.TITLE}
@@ -78,20 +76,20 @@ export const Footer = props => {
               )
             })}
 
-            {/* 微信二维码区域 */}
-            <div className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12'>
+            {/* 微信二维码区域 - 扩大宽度让布局更舒适 */}
+            <div className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-4/12'>
               <div className='mb-10 w-full'>
                 <h4 className='mb-9 text-lg font-semibold text-white'>
                   关注我们
                 </h4>
-                <div className='space-y-6'>
+                <div className='flex flex-col gap-8 sm:flex-row sm:justify-start lg:flex-col lg:gap-6'>
                   {wechatQRCodes.map((qrcode, index) => (
-                    <div key={index} className='text-center'>
-                      <div className='mb-3 flex justify-center'>
+                    <div key={index} className='text-center lg:text-left'>
+                      <div className='mb-3 flex justify-center lg:justify-start'>
                         <img
                           src={qrcode.image}
                           alt={qrcode.title}
-                          className='h-20 w-20 rounded-lg border border-gray-600 object-cover'
+                          className='h-24 w-24 rounded-lg border border-gray-600 object-cover'
                         />
                       </div>
                       <h5 className='mb-1 text-sm font-medium text-white'>
@@ -106,41 +104,10 @@ export const Footer = props => {
               </div>
             </div>
 
-            {/* 页脚右侧最新博文 - 调整宽度 */}
-            <div className='w-full px-4 md:w-2/3 lg:w-3/12 xl:w-4/12'>
-              <div className='mb-10 w-full'>
-                <h4 className='mb-9 text-lg font-semibold text-white'>
-                  {siteConfig('STARTER_FOOTER_BLOG_LATEST_TITLE')}
-                </h4>
-                {/* 展示两条最新博客文章 */}
-                <div className='flex flex-col gap-8'>
-                  {latestPosts?.map((item, index) => {
-                    return (
-                      <SmartLink
-                        key={index}
-                        href={item?.href}
-                        className='group flex items-center gap-[22px]'>
-                        {item.pageCoverThumbnail && (
-                          <div className='overflow-hidden rounded w-20 h-12'>
-                            <img
-                              src={item.pageCoverThumbnail}
-                              alt={item.title}
-                            />
-                          </div>
-                        )}
-                        <span className='line-clamp-2 max-w-[180px] text-base text-gray-7 group-hover:text-white'>
-                          {item.title}
-                        </span>
-                      </SmartLink>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* 其余代码保持不变... */}
+        {/* 底部版权信息相关 */}
         <div className='mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]'>
           <div className='container'>
             <div className='-mx-4 flex flex-wrap'>
