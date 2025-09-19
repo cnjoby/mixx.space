@@ -15,14 +15,14 @@ export const Footer = props => {
   // 微信二维码配置
   const wechatQRCodes = [
     {
-      title: '微信公众号',
+      title: '关注微信公众号',
       image: '/images/starter/footer/wechat-official.png', // 请替换为实际的公众号二维码图片路径
-      description: '关注我们的公众号'
+      description: ''
     },
     {
-      title: '微信视频号',
+      title: '关注我们视频号',
       image: '/images/starter/footer/wechat-video.png', // 请替换为实际的视频号二维码图片路径
-      description: '关注我们的视频号'
+      description: ''
     }
   ]
 
@@ -50,12 +50,12 @@ export const Footer = props => {
               </div>
             </div>
 
-            {/* 中间链接组 - 调整宽度以给二维码腾出空间 */}
+            {/* 两列链接组 - 调整为更大的宽度 */}
             {STARTER_FOOTER_LINK_GROUP?.map((item, index) => {
               return (
                 <div
                   key={index}
-                  className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12'>
+                  className='w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-3/12'>
                   <div className='mb-10 w-full'>
                     <h4 className='mb-9 text-lg font-semibold text-white'>
                       {item.TITLE}
@@ -107,7 +107,7 @@ export const Footer = props => {
             </div>
 
             {/* 页脚右侧最新博文 - 调整宽度 */}
-            <div className='w-full px-4 md:w-2/3 lg:w-4/12 xl:w-3/12'>
+            <div className='w-full px-4 md:w-2/3 lg:w-3/12 xl:w-4/12'>
               <div className='mb-10 w-full'>
                 <h4 className='mb-9 text-lg font-semibold text-white'>
                   {siteConfig('STARTER_FOOTER_BLOG_LATEST_TITLE')}
@@ -140,7 +140,7 @@ export const Footer = props => {
           </div>
         </div>
 
-        {/* 底部版权信息相关 */}
+        {/* 其余代码保持不变... */}
         <div className='mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]'>
           <div className='container'>
             <div className='-mx-4 flex flex-wrap'>
