@@ -10,31 +10,36 @@ export const MenuList = props => {
   const { locale } = useGlobal()
   const router = useRouter()
   
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false) // 主菜单显示状态
+  const [activeSubMenu, setActiveSubMenu] = useState(null) // 当前激活的子菜单ID
   const menuRef = useRef(null)
   const toggleButtonRef = useRef(null)
 
-  // 菜单配置保持不变
+  // 为菜单项添加唯一ID
   let links = [
     {
+      id: 'archive',
       icon: 'fas fa-archive',
       name: locale.NAV.ARCHIVE,
       href: '/archive',
       show: siteConfig('HEO_MENU_ARCHIVE')
     },
     {
+      id: 'search',
       icon: 'fas fa-search',
       name: locale.NAV.SEARCH,
       href: '/search',
       show: siteConfig('HEO_MENU_SEARCH')
     },
     {
+      id: 'category',
       icon: 'fas fa-folder',
       name: locale.COMMON.CATEGORY,
       href: '/category',
       show: siteConfig('HEO_MENU_CATEGORY')
     },
     {
+      id: 'tag',
       icon: 'fas fa-tag',
       name: locale.COMMON.TAGS,
       href: '/tag',
@@ -50,7 +55,13 @@ export const MenuList = props => {
     links = customMenu
   }
 
-  // 外部点击关闭菜单
+  // 关闭所有菜单
+  const closeAllMenus = useCallback(() => {
+    setShowMenu(false)
+    setActiveSubMenu(null)
+  }, [])
+
+  // 外部点击检测
   const handleOutsideClick = useCallback((event) => {
     if (
       menuRef.current && 
@@ -58,41 +69,63 @@ export const MenuList = props => {
       toggleButtonRef.current && 
       !toggleButtonRef.current.contains(event.target)
     ) {
-      setShowMenu(false)
+      closeAllMenus()
     }
-  }, [])
+  }, [closeAllMenus])
 
-  // ESC键关闭菜单
+  // 滚动事件检测 - 解决问题4
+  const handleScroll = useCallback(() => {
+    closeAllMenus()
+  }, [closeAllMenus])
+
+  // 键盘事件检测
   const handleKeyDown = useCallback((event) => {
-    if (event.key === 'Escape' && showMenu) {
-      setShowMenu(false)
+    if (event.key === 'Escape') {
+      closeAllMenus()
     }
-  }, [showMenu])
+  }, [closeAllMenus])
 
+  // 主菜单切换
   const toggleMenu = (event) => {
     event.stopPropagation()
     setShowMenu(!showMenu)
+    setActiveSubMenu(null) // 打开主菜单时清除子菜单状态
   }
 
-  // 路由变化时关闭菜单（保持原有功能）
-  useEffect(() => {
-    setShowMenu(false)
-  }, [router])
+  // 子菜单状态管理 - 解决问题5（单一激活模式）
+  const handleSubMenuToggle = useCallback((menuId) => {
+    setActiveSubMenu(current => current === menuId ? null : menuId)
+  }, [])
 
-  // 添加事件监听器
+  // 导航处理 - 解决问题2
+  const handleNavigation = useCallback(() => {
+    closeAllMenus()
+  }, [closeAllMenus])
+
+  // 路由变化时关闭所有菜单
   useEffect(() => {
-    if (showMenu) {
-      document.addEventListener('mousedown', handleOutsideClick)
-      document.addEventListener('keydown', handleKeyDown)
-      document.addEventListener('focusin', handleOutsideClick)
+    closeAllMenus()
+  }, [router.pathname, closeAllMenus])
+
+  // 事件监听器管理 - 解决问题3和4
+  useEffect(() => {
+    if (showMenu || activeSubMenu) {
+      const timer = setTimeout(() => {
+        document.addEventListener('mousedown', handleOutsideClick, true)
+        document.addEventListener('scroll', handleScroll, true) // 页面滚动
+        document.addEventListener('keydown', handleKeyDown)
+        window.addEventListener('scroll', handleScroll, true) // 窗口滚动
+      }, 0)
       
       return () => {
-        document.removeEventListener('mousedown', handleOutsideClick)
+        clearTimeout(timer)
+        document.removeEventListener('mousedown', handleOutsideClick, true)
+        document.removeEventListener('scroll', handleScroll, true)
         document.removeEventListener('keydown', handleKeyDown)
-        document.removeEventListener('focusin', handleOutsideClick)
+        window.removeEventListener('scroll', handleScroll, true)
       }
     }
-  }, [showMenu, handleOutsideClick, handleKeyDown])
+  }, [showMenu, activeSubMenu, handleOutsideClick, handleScroll, handleKeyDown])
 
   if (!links || links.length === 0) {
     return null
@@ -100,14 +133,12 @@ export const MenuList = props => {
 
   return (
     <div className="relative">
-      {/* 汉堡菜单按钮 - 添加动画效果 */}
+      {/* 汉堡菜单按钮 */}
       <button
         ref={toggleButtonRef}
         id='navbarToggler'
         onClick={toggleMenu}
         aria-expanded={showMenu}
-        aria-controls="navbarCollapse"
-        aria-label="Toggle navigation menu"
         className={`absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden transition-all duration-300 ${
           showMenu ? 'navbarTogglerActive' : ''
         }`}>
@@ -122,25 +153,29 @@ export const MenuList = props => {
         }`}></span>
       </button>
 
-      {/* 背景遮罩层（移动端） */}
+      {/* 背景遮罩 */}
       {showMenu && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
-          onClick={() => setShowMenu(false)}
-          aria-hidden="true"
+          onClick={closeAllMenus}
         />
       )}
 
       <nav
         ref={menuRef}
         id='navbarCollapse'
-        role="navigation"
-        className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark-2 z-40 transition-all duration-300 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none lg:z-auto dark:lg:bg-transparent xl:px-6 ${
-          showMenu ? 'block opacity-100 translate-y-0' : 'hidden opacity-0 -translate-y-2'
-        } lg:opacity-100 lg:translate-y-0`}>
+        className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark-2 z-40 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none lg:z-auto dark:lg:bg-transparent xl:px-6 ${
+          showMenu ? '' : 'hidden'
+        }`}>
         <ul className='block lg:flex 2xl:ml-20'>
           {links?.map((link, index) => (
-            <MenuItem key={index} link={link} />
+            <MenuItem 
+              key={link.id || index}
+              link={{...link, id: link.id || index}}
+              isSubMenuOpen={activeSubMenu === (link.id || index)}
+              onSubMenuToggle={() => handleSubMenuToggle(link.id || index)}
+              onNavigation={handleNavigation}
+            />
           ))}
         </ul>
       </nav>
