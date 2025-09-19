@@ -294,49 +294,42 @@ const CONFIG = {
   STARTER_FOOTER_SLOGAN: '让珍贵的文化遗产在混合空间中获得永续生命力',
 
   // 页脚三列菜单组
-  STARTER_FOOTER_LINK_GROUP: [
-    {
-      TITLE: '关于我们',
-      LINK_GROUP: [
-        { TITLE: '官方主页', URL: '/#home' },
-        {
-          TITLE: '合作申请',
-          URL: 'https://noteforms.com/forms/zdzoon'
-        }
-      ]
-    },
-    {
-      TITLE: '公司自媒体',
-      LINK_GROUP: [
-        { TITLE: '公众号:mixx.space', URL: 'http://weixin.qq.com/r/mp/MBByaoDEmd3mrcQJ90Ui' },
-      {TITLE: '抖音 - 未来博物馆',
-          URL: 'https://v.douyin.com/8Vo_coFd7GE/'
-        },
-        { TITLE: '小红书 - 未来博物馆', URL: 'https://www.xiaohongshu.com/user/profile/5d88423e0000000001008163' }
-      ]
-    }
-    ,
+  // 页脚两列菜单组
+STARTER_FOOTER_LINK_GROUP: [
+  {
+    TITLE: '关于我们',
+    LINK_GROUP: [
+      { TITLE: '官方主页', URL: '/#home' },
       {
-    TITLE: '蒋产品',
-      LINK_GROUP: [{
-          TITLE: '抖音 - 蒋产品',
-          URL: 'https://v.douyin.com/JzZaeTnbyOM/'
-        },
-         {
-          TITLE: 'B站 - 蒋产品',
-          URL: 'https://space.bilibili.com/4195074'
-        },
+        TITLE: '合作申请',
+        URL: 'https://noteforms.com/forms/zdzoon'
+      },
+       { TITLE: '小红书 - 未来博物馆', URL: 'https://www.xiaohongshu.com/user/profile/5d88423e0000000001008163' },
+       {TITLE: '抖音 - 未来博物馆',
+        URL: 'https://v.douyin.com/8Vo_coFd7GE/'
+      }
+    ]
+  },
+  {
+    TITLE: '相关自媒体',
+    LINK_GROUP: [
        {
-          TITLE: '小红书 - 蒋产品',
-          URL: 'https://www.xiaohongshu.com/user/profile/61892f6b000000001000460d'
-        } 
-      ]
-    }
-  ],
-   
+        TITLE: 'B站 - 蒋产品',
+        URL: 'https://space.bilibili.com/4195074'
+      }, 
+      {
+        TITLE: '抖音 - 蒋产品',
+        URL: 'https://v.douyin.com/JzZaeTnbyOM/'
+      },
+      {
+        TITLE: '小红书 - 蒋产品',
+        URL: 'https://www.xiaohongshu.com/user/profile/61892f6b000000001000460d'
+      } 
+    ]
+  }
+],
 
-  STARTER_FOOTER_BLOG_LATEST_TITLE: '最新文章',
-
+ STARTER_FOOTER_BLOG_LATEST_TITLE: '最新文章',
  STARTER_FOOTER_PRIVACY_POLICY_TEXT: '沪ICP备2023018343号',
  STARTER_FOOTER_PRIVACY_POLICY_URL: 'https://beian.miit.gov.cn/',
 
