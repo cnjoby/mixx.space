@@ -64,11 +64,11 @@ const CONFIG = {
   STARTER_ABOUT_TEXT:
     '未来博物馆是幂景科技（上海）有限公司打造的全球首座MR虚实融合连锁博物馆，以混合现实（MR）技术和创新互动体验重新定义文化传承。我们通过无实物数字化展示呈现珍贵文物的高精度细节，融合AI数字人导览和沉浸式交互，让文物“活”起来——观众可触碰虚拟编钟奏响千年遗音，或参与AR文物的修复与解密。',
   STARTER_ABOUT_BUTTON_TEXT: '了解更多',
-  STARTER_ABOUT_BUTTON_URL: 'https://mixx.space/about',
+  STARTER_ABOUT_BUTTON_URL: 'https://mixx.space/museum',
   STARTER_ABOUT_IMAGE_1: '/images/starter/about/about-image-01.jpg',
   STARTER_ABOUT_IMAGE_2: '/images/starter/about/about-image-02.jpg',
-  STARTER_ABOUT_TIPS_1: '全国7个城市',
-  STARTER_ABOUT_TIPS_2: '未来科技文化地标',
+  STARTER_ABOUT_TIPS_1: '科技文化地标',
+  STARTER_ABOUT_TIPS_2: '全国7城',
   STARTER_ABOUT_TIPS_3: '正在向市民开放',
 
   // 首页价格区块
