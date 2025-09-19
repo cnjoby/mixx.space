@@ -1,31 +1,37 @@
 import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 
-/**
- * 菜单链接
- * @param {*} param0
- * @returns
- */
-export const MenuItem = ({ link }) => {
+export const MenuItem = ({ 
+  link, 
+  isSubMenuOpen = false, 
+  onSubMenuToggle, 
+  onNavigation 
+}) => {
   const hasSubMenu = link?.subMenus?.length > 0
   const router = useRouter()
 
-  // 管理子菜单的展开状态
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
+  const handleToggle = (event) => {
+    event.stopPropagation()
+    if (onSubMenuToggle) {
+      onSubMenuToggle()
+    }
+  }
 
-  const toggleSubMenu = () => {
-    setIsSubMenuOpen(prev => !prev) // 切换子菜单状态
+  const handleLinkClick = () => {
+    if (onNavigation) {
+      onNavigation() // 点击任何链接都关闭菜单
+    }
   }
 
   return (
     <>
-      {/* 普通 MenuItem */}
+      {/* 普通菜单项 */}
       {!hasSubMenu && (
         <li className='group relative whitespace-nowrap'>
           <SmartLink
             href={link?.href}
             target={link?.target}
+            onClick={handleLinkClick}
             className={`ud-menu-scroll mx-8 flex py-2 text-base font-medium text-dark group-hover:text-primary dark:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
               router.route === '/'
                 ? 'lg:text-white lg:group-hover:text-white'
@@ -37,11 +43,11 @@ export const MenuItem = ({ link }) => {
         </li>
       )}
 
-      {/* 有子菜单的 MenuItem */}
+      {/* 有子菜单的菜单项 */}
       {hasSubMenu && (
         <li className='submenu-item group relative whitespace-nowrap'>
           <button
-            onClick={toggleSubMenu}
+            onClick={handleToggle}
             className={`cursor-pointer relative px-8 flex items-center justify-between py-2 text-base font-medium text-dark group-hover:text-primary dark:text-white lg:ml-8 lg:mr-0 lg:inline-flex lg:py-6 lg:pl-0 lg:pr-4 ${
               router.route === '/'
                 ? 'lg:text-white lg:group-hover:text-white'
@@ -53,7 +59,9 @@ export const MenuItem = ({ link }) => {
             </span>
 
             <svg
-              className='ml-2 fill-current'
+              className={`ml-2 fill-current transition-transform duration-200 ${
+                isSubMenuOpen ? 'rotate-180' : ''
+              }`}
               width='16'
               height='20'
               viewBox='0 0 16 20'
@@ -70,15 +78,15 @@ export const MenuItem = ({ link }) => {
                 ? 'block opacity-100 visible'
                 : 'hidden opacity-0 invisible'
             }`}>
-            {link.subMenus.map((sLink, index) => (
+            {link.subMenus?.map((sLink, index) => (
               <SmartLink
                 key={index}
                 href={sLink.href}
-                target={link?.target}
+                target={sLink.target}
+                onClick={handleLinkClick} // 点击子菜单项时关闭所有菜单
                 className='block rounded px-4 py-[10px] text-sm text-body-color hover:text-primary dark:text-dark-6 dark:hover:text-primary'>
-                {/* 子菜单 SubMenuItem */}
                 <span className='text-md ml-2 whitespace-nowrap'>
-                  {link?.icon && <i className={sLink.icon + ' mr-2 my-auto'} />}{' '}
+                  {sLink.icon && <i className={sLink.icon + ' mr-2 my-auto'} />}
                   {sLink.title}
                 </span>
               </SmartLink>
