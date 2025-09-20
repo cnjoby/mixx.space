@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { MenuItem } from './MenuItem'
 
 export const MenuList = props => {
-  const { links } = props
+  const { links = [] } = props
   const [showMenu, setShowMenu] = useState(false)
   const [activeSubMenu, setActiveSubMenu] = useState(null)
   const toggleButtonRef = useRef(null)
