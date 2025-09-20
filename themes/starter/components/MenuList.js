@@ -1,5 +1,67 @@
+import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
+import { MenuItem } from './MenuItem'
+
 export const MenuList = props => {
-  // ... 保持其他状态和逻辑不变
+  const { links } = props
+  const [showMenu, setShowMenu] = useState(false)
+  const [activeSubMenu, setActiveSubMenu] = useState(null)
+  const toggleButtonRef = useRef(null)
+  const menuRef = useRef(null)
+  const router = useRouter()
+
+  // 切换菜单显示状态
+  const toggleMenu = () => {
+    setShowMenu(!showMenu)
+  }
+
+  // 关闭所有菜单
+  const closeAllMenus = () => {
+    setShowMenu(false)
+    setActiveSubMenu(null)
+  }
+
+  // 处理子菜单切换
+  const handleSubMenuToggle = (id) => {
+    setActiveSubMenu(activeSubMenu === id ? null : id)
+  }
+
+  // 处理导航
+  const handleNavigation = () => {
+    closeAllMenus()
+  }
+
+  // 点击外部关闭菜单
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        showMenu &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        toggleButtonRef.current &&
+        !toggleButtonRef.current.contains(event.target)
+      ) {
+        closeAllMenus()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showMenu])
+
+  // 路由变化时关闭菜单
+  useEffect(() => {
+    const handleRouteChange = () => {
+      closeAllMenus()
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>
@@ -10,7 +72,8 @@ export const MenuList = props => {
         onClick={toggleMenu}
         aria-expanded={showMenu}
         aria-label="Toggle navigation menu"
-        className={`fixed lg:hidden top-4 right-4 z-50 w-10 h-10 flex flex-col justify-center items-center rounded-lg bg-black bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 ${showMenu ? 'navbarTogglerActive' : ''}`}>
+        className={`fixed lg:hidden top-4 right-4 z-50 w-10 h-10 flex flex-col justify-center items-center rounded-lg bg-black bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 ${showMenu ? 'navbarTogglerActive' : ''}`}
+        style={{ right: '1rem', left: 'auto' }}>
         
         {/* 简化的汉堡图标 */}
         <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center ${showMenu ? 'rotate-45 translate-y-0.5' : 'mb-1'}`}></span>

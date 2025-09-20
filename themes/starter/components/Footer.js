@@ -79,8 +79,8 @@ export const Footer = props => {
                   关注我们
                 </h4>
                 
-                {/* 桌面端横向排列，移动端纵向排列 */}
-                <div className='flex flex-col gap-8 sm:flex-col md:flex-col lg:flex-row lg:gap-4 xl:flex-row xl:gap-6'>
+                {/* 所有屏幕尺寸下都横向排列 */}
+                <div className='flex flex-row gap-4 sm:flex-row md:flex-row lg:flex-row lg:gap-4 xl:flex-row xl:gap-6'>
                   {wechatQRCodes.map((qrcode, index) => (
                     <div key={index} className='flex-1 text-center'>
                       <div className='mb-3 flex justify-center'>
